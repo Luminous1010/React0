@@ -1,0 +1,31 @@
+import React from 'react'
+
+import './message.css'
+
+const log = console.log.bind(console)
+
+
+// class 是 es6 中创建对象的语法糖
+// 实际上和以前的是等价的
+class Message extends React.Component {
+    // render 函数, 这个语法很奇怪, 因为是 es6 定义方法的样子
+    // 而是 jsx
+    // render 函数用来渲染页面
+    // props 是属性, 是外面(父组件)使用的时候传给 Message 的东西
+    // {} 里面可以是任意一个 js 语言的表达式
+    render() {
+        // return 的东西最外层必须有一个标签
+        // 这个东西虽然看上去像是 html 实际上并不是
+        // 这个东西会被 react 转换为 html 所以要用 className 而不是 class
+        // 这是 jsx 和 react 的规定
+        log('this.props', this.props)
+        return (
+            <div className="message-div">
+                <div>Hello {this.props.name}</div>
+                <div>大写 {this.props.name.toUpperCase()}</div>
+            </div>
+        )
+    }
+}
+
+export default Message
